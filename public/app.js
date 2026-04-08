@@ -1,9 +1,32 @@
 const loginModal = document.getElementById('loginModal');
 const loginForm = document.getElementById('loginForm');
 const openLoginBtn = document.getElementById('openLoginBtn');
+<<<<<<< Updated upstream
+=======
+const logoutBtn = document.getElementById('logoutBtn');
+const messageBtn = document.getElementById('messageBtn');
+const passwordInput = document.getElementById('password');
+const togglePasswordBtn = document.getElementById('togglePasswordBtn');
+>>>>>>> Stashed changes
 const messageEl = document.getElementById('message');
 const statusEl = document.getElementById('status');
+const messageBoxEl = document.getElementById('messagebox');
 
+<<<<<<< Updated upstream
+=======
+function resetPasswordToggle() {
+  passwordInput.type = 'password';
+  togglePasswordBtn.textContent = 'Show';
+}
+
+function showMessageBox() {
+    messageBoxEl.innerText = "Hello! This message appeared after clicking the button.";
+}
+
+messageBtn.addEventListener('click', showMessageBox);
+
+
+>>>>>>> Stashed changes
 function openModal() {
   loginModal.classList.add('open');
   loginModal.setAttribute('aria-hidden', 'false');
