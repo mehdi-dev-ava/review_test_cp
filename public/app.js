@@ -1,6 +1,7 @@
 const loginModal = document.getElementById('loginModal');
 const loginForm = document.getElementById('loginForm');
 const openLoginBtn = document.getElementById('openLoginBtn');
+const logoutBtn = document.getElementById('logoutBtn');
 const messageEl = document.getElementById('message');
 const statusEl = document.getElementById('status');
 
@@ -24,6 +25,12 @@ function showMessage(text, type = '') {
 }
 
 openLoginBtn.addEventListener('click', openModal);
+logoutBtn.addEventListener('click', () => {
+  statusEl.textContent = 'Please log in to continue.';
+  logoutBtn.classList.add('hidden');
+  openLoginBtn.classList.remove('hidden');
+  openModal();
+});
 
 loginForm.addEventListener('submit', async (event) => {
   event.preventDefault();
@@ -54,6 +61,8 @@ loginForm.addEventListener('submit', async (event) => {
 
     showMessage(data.message || 'Login successful.', 'success');
     statusEl.textContent = `Logged in as ${data.user.username}.`;
+    logoutBtn.classList.remove('hidden');
+    openLoginBtn.classList.add('hidden');
 
     setTimeout(() => {
       closeModal();
