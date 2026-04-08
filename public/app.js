@@ -2,8 +2,15 @@ const loginModal = document.getElementById('loginModal');
 const loginForm = document.getElementById('loginForm');
 const openLoginBtn = document.getElementById('openLoginBtn');
 const logoutBtn = document.getElementById('logoutBtn');
+const passwordInput = document.getElementById('password');
+const togglePasswordBtn = document.getElementById('togglePasswordBtn');
 const messageEl = document.getElementById('message');
 const statusEl = document.getElementById('status');
+
+function resetPasswordToggle() {
+  passwordInput.type = 'password';
+  togglePasswordBtn.textContent = 'Show';
+}
 
 function openModal() {
   loginModal.classList.add('open');
@@ -29,7 +36,14 @@ logoutBtn.addEventListener('click', () => {
   statusEl.textContent = 'Please log in to continue.';
   logoutBtn.classList.add('hidden');
   openLoginBtn.classList.remove('hidden');
+  resetPasswordToggle();
   openModal();
+});
+
+togglePasswordBtn.addEventListener('click', () => {
+  const isHidden = passwordInput.type === 'password';
+  passwordInput.type = isHidden ? 'text' : 'password';
+  togglePasswordBtn.textContent = isHidden ? 'Hide' : 'Show';
 });
 
 loginForm.addEventListener('submit', async (event) => {
@@ -67,6 +81,7 @@ loginForm.addEventListener('submit', async (event) => {
     setTimeout(() => {
       closeModal();
       loginForm.reset();
+      resetPasswordToggle();
       showMessage('');
     }, 550);
   } catch (error) {

@@ -23,7 +23,10 @@
           <input id="username" name="username" type="text" autocomplete="username" required />
 
           <label for="password">Password</label>
-          <input id="password" name="password" type="password" autocomplete="current-password" required />
+          <div class="password-row">
+            <input id="password" name="password" type="password" autocomplete="current-password" required />
+            <button id="togglePasswordBtn" type="button" class="secondary-btn password-toggle-btn" aria-pressed="false" aria-controls="password">Show</button>
+          </div>
 
           <p id="message" class="message" aria-live="polite"></p>
 
