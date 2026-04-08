@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login SPA</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="background-glow"></div>
+    <main class="app-shell">
+      <h1>Welcome</h1>
+      <p id="status">Please log in to continue.</p>
+      <button id="openLoginBtn" class="secondary-btn">Open Login</button>
+    </main>
+
+    <div id="loginModal" class="modal-overlay" aria-hidden="true">
+      <div class="modal" role="dialog" aria-labelledby="loginTitle" aria-modal="true">
+        <h2 id="loginTitle">Sign In</h2>
+        <form id="loginForm">
+          <label for="username">Username</label>
+          <input id="username" name="username" type="text" autocomplete="username" required />
+
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" required />
+
+          <p id="message" class="message" aria-live="polite"></p>
+
+          <div class="actions">
+            <button type="submit" class="primary-btn">Login</button>
+          </div>
+        </form>
+
+        <p class="hint">Demo credentials: admin / password123</p>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

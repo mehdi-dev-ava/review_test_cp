@@ -1,0 +1,165 @@
+:root {
+  --bg-start: #f2efe7;
+  --bg-end: #d9e7f5;
+  --card: #ffffff;
+  --text: #132330;
+  --muted: #4c6172;
+  --accent: #0c6a5b;
+  --accent-hover: #09594d;
+  --danger: #b42318;
+  --shadow: 0 14px 40px rgba(19, 35, 48, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text);
+  background: linear-gradient(140deg, var(--bg-start), var(--bg-end));
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.background-glow {
+  position: fixed;
+  width: 70vmax;
+  height: 70vmax;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(12, 106, 91, 0.2), rgba(12, 106, 91, 0));
+  top: -25vmax;
+  right: -25vmax;
+  pointer-events: none;
+}
+
+.app-shell {
+  width: min(92vw, 560px);
+  padding: 2rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+}
+
+#status {
+  margin: 1rem 0 1.5rem;
+  color: var(--muted);
+}
+
+.secondary-btn,
+.primary-btn {
+  border: 0;
+  border-radius: 10px;
+  padding: 0.72rem 1rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.secondary-btn {
+  background: #e8eef5;
+  color: #1f3447;
+}
+
+.primary-btn {
+  width: 100%;
+  background: var(--accent);
+  color: #fff;
+}
+
+.primary-btn:hover {
+  background: var(--accent-hover);
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(12, 21, 28, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal {
+  width: min(92vw, 420px);
+  background: var(--card);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 1.35rem;
+  transform: translateY(12px) scale(0.98);
+  transition: transform 0.25s ease;
+}
+
+.modal-overlay.open .modal {
+  transform: translateY(0) scale(1);
+}
+
+.modal h2 {
+  margin-top: 0;
+}
+
+form {
+  display: grid;
+  gap: 0.65rem;
+}
+
+label {
+  text-align: left;
+  font-size: 0.9rem;
+  color: #253d52;
+}
+
+input {
+  width: 100%;
+  border: 1px solid #bfd1de;
+  border-radius: 10px;
+  padding: 0.65rem 0.72rem;
+  font-size: 0.95rem;
+}
+
+input:focus {
+  outline: 2px solid rgba(12, 106, 91, 0.3);
+  border-color: var(--accent);
+}
+
+.message {
+  min-height: 1.2rem;
+  margin: 0.2rem 0;
+  font-size: 0.9rem;
+}
+
+.message.error {
+  color: var(--danger);
+}
+
+.message.success {
+  color: var(--accent);
+}
+
+.hint {
+  margin: 0.85rem 0 0;
+  color: #5c7082;
+  font-size: 0.82rem;
+}
+
+@media (max-width: 480px) {
+  .app-shell {
+    padding: 1.25rem;
+  }
+}
